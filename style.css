@@ -1,0 +1,1083 @@
+/* =====================
+   RESET & VARIABLES
+===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --brand: #7a1e1e;
+  --dark: #0f0f0f;
+  --light: #ffffff;
+  --muted: #777;
+  --bg: #f7f7f7;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--dark);
+  line-height: 1.8;
+}
+
+/* =====================
+   HEADER / HERO
+===================== */
+header {
+  position: relative;
+  height: 100vh;
+  min-height: 100vh;
+  background: url("hero-bg.jpg") center/cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* vertically center everything by default */
+  text-align: center;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(122, 30, 30, 0.5), rgba(0, 0, 0, 0.5));
+  z-index: 1;
+  backdrop-filter: blur(2px);
+}
+
+/* NAV / LOGO */
+nav {
+  z-index: 3;
+}
+
+nav img {
+  height: 260px;
+  max-width: 100%;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+/* HERO CONTENT */
+.hero {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  padding: 0 30px;
+  color: var(--light);
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.hero p {
+  font-size: 15px;
+  color: #eee;
+  max-width: 540px;
+  margin: 0 auto 28px;
+}
+
+/* BUTTONS */
+.btns {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 12px 26px;
+  font-size: 14px;
+  text-decoration: none;
+  letter-spacing: 0.4px;
+  transition: 0.3s;
+}
+
+.btn-primary {
+  background: var(--light);
+  color: var(--brand);
+}
+
+.btn-primary:hover {
+  background: #eee;
+}
+
+.btn-outline {
+  border: 1px solid var(--light);
+  color: var(--light);
+}
+
+.btn-outline:hover {
+  background: var(--light);
+  color: var(--brand);
+}
+
+/* TRUST BAR FIXED AT BOTTOM OF HEADER */
+.trust {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 3;
+
+    /* Enhanced frosted glass effect */
+    backdrop-filter: blur(20px) saturate(120%);
+    -webkit-backdrop-filter: blur(20px) saturate(120%); /* Safari support */
+
+    /* More transparency for depth */
+    background: rgba(255, 255, 255, 0.08);
+
+    color: #fff;
+    text-align: center;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    padding: 16px 20px;
+}
+
+
+/* =====================
+   DESKTOP HERO POSITION FIX
+===================== */
+@media (min-width: 1101px) {
+  header {
+    justify-content: flex-start; /* start stacking from top */
+    padding-top: 120px; /* space from top for logo */
+  }
+
+  .hero {
+    margin-top: 40px; /* push hero below logo */
+  }
+}
+
+/* =====================
+   MOBILE / RESPONSIVE
+===================== */
+@media (min-width: 1101px) {
+  header {
+    justify-content: flex-start; /* stack from top */
+    padding-top: 40px; /* smaller space from top */
+  }
+
+  nav img {
+    margin-top: -40px; /* push logo up */
+  }
+
+  .hero {
+    margin-top: -60px; /* move hero closer to logo */
+  }
+}
+
+
+@media (max-width: 768px) {
+  nav img {
+    height: 250px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .btn {
+    padding: 10px 22px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  nav img {
+    height: 200px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 13px;
+  }
+}
+
+/* =====================
+   SECTIONS
+===================== */
+section {
+  padding: 50px 80px;
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-title h2,
+section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  margin-bottom: 12px;
+  color: var(--dark);
+}
+
+.section-title p,
+section p {
+  color: var(--muted);
+  font-size: 15px;
+  text-align: center;
+}
+
+/* ============================
+   SERVICES CARDS
+============================ */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 26px;
+}
+
+.service-card {
+  background: var(--light);
+  border-radius: 10px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+  overflow: hidden;
+  text-align: center;
+  transition: 0.3s;
+  position: relative;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+}
+
+.service-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  position: relative;
+}
+
+.service-card div {
+  padding: 24px;
+}
+
+.service-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: var(--dark);
+}
+
+.service-card p {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.service-card a {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 13px;
+  text-decoration: none;
+  color: var(--brand);
+  font-weight: 500;
+}
+
+/* BADGE ONLY INSIDE SERVICE CARDS */
+.service-card .badge {
+  position: absolute;      /* now absolute on top of image */
+  top: 15px;
+  left: 15px;
+  background: var(--brand);
+  color: #fff;
+  font-size: 11px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  z-index: 10;
+  font-weight: 500;
+}
+
+/* ============================
+   MARKET INSIGHTS SECTION
+============================ */
+.market-insights {
+  padding-top: 60px;    /* space above the title */
+  padding-bottom: 40px; /* reduce space below to avoid too much gap */
+}
+
+.market-insights .section-title {
+  text-align: center;
+  margin-bottom: 50px; /* space between heading/paragraph and cards */
+}
+
+.market-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 35px;
+  margin-top: 0; /* handled by section-title margin */
+}
+
+.market-card {
+  background: #fff;
+  border-radius: 22px;
+  padding: 40px 30px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.07);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.market-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 60px rgba(0,0,0,0.12);
+}
+
+.market-card i {
+  font-size: 32px;
+  color: var(--brand); /* maroon brand color */
+  margin-bottom: 18px;
+}
+
+.market-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: var(--dark);
+}
+
+.market-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* ============================
+   INVESTMENT PROCESS SECTION
+============================ */
+.investment-process {
+  padding: 40px 30px 80px; /* reduced top spacing to match previous section */
+}
+
+.investment-process .section-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.investment-process .section-title h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  color: var(--dark);
+  margin-bottom: 0;
+}
+
+.investment-process .section-desc {
+  text-align: center;
+  max-width: 900px;
+  margin: 20px auto 50px; /* space between description and cards */
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* ============================
+   PROCESS CARDS GRID
+============================ */
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* all cards in one row desktop */
+  gap: 28px;
+}
+
+.process-card {
+  background: var(--light);
+  border-radius: 12px;
+  box-shadow: 0 16px 35px rgba(0,0,0,0.08);
+  padding: 28px 22px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.process-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 45px rgba(0,0,0,0.12);
+}
+
+.process-card i {
+  font-size: 30px;
+  margin-bottom: 16px;
+  color: var(--brand);
+}
+
+.process-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.process-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* ============================
+   RESPONSIVE STYLES
+============================ */
+@media (max-width: 1100px) {
+  .market-insights {
+    padding-top: 50px;
+    padding-bottom: 40px;
+  }
+  .market-insights .section-title {
+    margin-bottom: 40px;
+  }
+
+  .process-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 cards per row for tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .market-insights {
+    padding: 40px 20px 50px;
+  }
+  .market-insights .section-title {
+    margin-bottom: 30px;
+  }
+  .market-card h3 {
+    font-size: 18px;
+  }
+  .market-card p {
+    font-size: 14px;
+  }
+
+  .investment-process {
+    padding: 50px 20px 60px; /* reduced top/bottom spacing for mobile */
+  }
+  .process-grid {
+    grid-template-columns: 1fr; /* stack cards on mobile */
+  }
+  .process-card h3 {
+    font-size: 18px;
+  }
+  .process-card p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .market-card h3 {
+    font-size: 16px;
+  }
+  .market-card p {
+    font-size: 13px;
+  }
+  .investment-process .section-desc {
+    font-size: 14px;
+  }
+  .process-card h3 {
+    font-size: 16px;
+  }
+  .process-card p {
+    font-size: 13px;
+  }
+}
+
+
+/* ============================
+   WHO WE WORK WITH SECTION
+============================ */
+.who-we-work {
+  padding: 60px 30px 50px; /* reduced bottom space */
+}
+
+.who-we-work .section-title {
+  text-align: center;
+  margin-bottom: 40px; /* space between title and cards */
+}
+
+/* Cards Grid */
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+}
+
+/* Card */
+.partner-card {
+  background: var(--light);
+  border-radius: 12px;
+  box-shadow: 0 16px 35px rgba(0,0,0,0.08);
+  padding: 30px 22px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.partner-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 45px rgba(0,0,0,0.12);
+}
+
+.partner-card i {
+  font-size: 30px;
+  margin-bottom: 16px;
+  color: var(--brand);
+}
+
+.partner-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: var(--dark);
+}
+
+.partner-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* ============================
+   CLIENT EXPERIENCES SECTION
+============================ */
+.client-experiences {
+  padding: 50px 30px 70px; /* tighter gap between sections */
+}
+
+.client-experiences .section-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Cards Grid */
+.client-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+}
+
+/* Card */
+.client-card {
+  background: var(--light);
+  border-radius: 12px;
+  box-shadow: 0 16px 35px rgba(0,0,0,0.08);
+  padding: 30px 22px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.client-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 45px rgba(0,0,0,0.12);
+}
+
+.client-card i {
+  font-size: 30px;
+  margin-bottom: 16px;
+  color: var(--brand);
+}
+
+.client-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: var(--dark);
+}
+
+.client-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* ============================
+   RESPONSIVE
+============================ */
+@media (max-width: 768px) {
+  .who-we-work,
+  .client-experiences {
+    padding: 45px 20px;
+  }
+
+  .partner-card h3,
+  .client-card h3 {
+    font-size: 18px;
+  }
+
+  .partner-card p,
+  .client-card p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .partner-card h3,
+  .client-card h3 {
+    font-size: 16px;
+  }
+
+  .partner-card p,
+  .client-card p {
+    font-size: 13px;
+  }
+}
+
+/* ============================
+   WHY BAIG REAL ESTATE SECTION
+============================ */
+.why-baig-real-estate {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  background: url("hero-bg.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  color: #fff;
+}
+
+/* Gradient overlay */
+.why-baig-real-estate .overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(122,30,30,0.5), rgba(0,0,0,0.5));
+  z-index: 1;
+}
+
+/* Container for content to stay within max-width */
+.why-baig-real-estate .container {
+  position: relative; /* above overlay */
+  z-index: 2;
+  max-width: 1140px;
+  width: 100%;
+  padding: 0 30px;
+}
+
+/* Heading */
+.why-baig-real-estate h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  line-height: 1.2;
+  margin-bottom: 30px;
+  color: #fff;
+}
+
+/* List styles */
+.why-baig-real-estate ul {
+  list-style: none; /* remove bullets */
+  padding-left: 0;
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+.why-baig-real-estate li {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 18px;
+  color: #eee;
+  text-align: left;
+}
+
+/* Strong text emphasis */
+.why-baig-real-estate li strong {
+  color: #fff;
+}
+
+/* ============================
+   RESPONSIVE
+============================ */
+@media (max-width: 1100px) {
+  .why-baig-real-estate h2 {
+    font-size: 40px;
+  }
+  .why-baig-real-estate li {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .why-baig-real-estate {
+    height: auto;
+    padding: 80px 20px;
+  }
+  .why-baig-real-estate h2 {
+    font-size: 36px;
+  }
+  .why-baig-real-estate li {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .why-baig-real-estate h2 {
+    font-size: 28px;
+  }
+  .why-baig-real-estate li {
+    font-size: 13px;
+  }
+}
+
+/* =====================
+   CLIENT LOGO CAROUSEL
+===================== */
+.clients-section {
+  background: #fff;
+  padding: 80px 0;
+}
+
+.clients-carousel-wrapper {
+  overflow: hidden;
+  margin-top: 40px;
+}
+
+.clients-carousel {
+  display: flex;
+  gap: 40px;
+  animation: scroll 30s linear infinite;
+}
+
+.client-logo img {
+  height: 50px;
+  filter: grayscale(100%);
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.client-logo img:hover {
+  filter: grayscale(0);
+  opacity: 1;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* =====================
+   FOOTER
+===================== */
+.footer {
+  background: url('hero-bg.jpg') no-repeat center center; /* footer bg */
+  background-size: cover;  /* cover entire footer */
+  position: relative;
+  color: #bbb;
+  padding: 60px 40px 100px; /* extra bottom padding for footer-bottom */
+  overflow: hidden;
+}
+
+/* Optional overlay for better text readability */
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(11, 11, 11, 0.85); /* semi-transparent dark overlay */
+  z-index: 0;
+}
+
+.footer-container {
+  max-width: 1140px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+  align-items: center;
+  position: relative; /* content above overlay */
+  z-index: 1;
+}
+
+.footer-brand img {
+  height: 200px;
+}
+
+.footer h4 {
+  margin-bottom: 12px;
+  color: var(--brand);
+}
+
+.footer-contact {
+  margin-top: 10px;
+}
+
+.tagline {
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+/* FOOTER SOCIAL ICONS */
+.footer .social-icons {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.footer .social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #1a1a1a;
+  color: #bbb;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.footer .social-icons a:hover {
+  background: var(--brand);
+  color: #fff;
+}
+
+/* =====================
+   FOOTER-BOTTOM LIKE TRUST BAR
+===================== */
+.footer-bottom {
+  position: absolute;                 /* stay inside footer at bottom */
+  left: 0;
+  bottom: 0;                          /* stick to bottom of footer */
+  width: 100%;                        /* full footer width */
+  z-index: 3;
+
+  /* Enhanced frosted glass effect like trust bar */
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%); /* Safari support */
+
+  /* More transparency for depth */
+  background: rgba(255, 255, 255, 0.08);
+
+  color: #fff;                        /* white text */
+  text-align: center;
+  font-weight: 500;
+  font-size: 0.95rem;                 /* match trust bar font size */
+  letter-spacing: 0.5px;              /* match trust bar */
+  padding: 16px 20px;                 /* same as trust bar */
+}
+
+/* =====================
+   FLOATING WHATSAPP BUTTON
+===================== */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--brand);
+  color: #fff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  font-size: 30px;
+  line-height: 60px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 999;
+  transition: transform 0.3s;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 1100px) {
+  header {
+    justify-content: center;
+    padding-top: 40px;
+  }
+}
+
+/* =====================================================
+   MOBILE REFINEMENTS (ONLY MOBILE — DESKTOP UNTOUCHED)
+===================================================== */
+
+/* ---------- GENERAL MOBILE SPACING ---------- */
+@media (max-width: 768px) {
+  section {
+    padding: 50px 20px;
+  }
+
+  .section-title {
+    margin-bottom: 35px;
+  }
+
+  .section-title h2 {
+    font-size: 30px;
+  }
+
+  .section-title p {
+    font-size: 14px;
+  }
+}
+
+/* ---------- HERO / HEADER MOBILE FIX ---------- */
+@media (max-width: 768px) {
+  header {
+    height: auto;
+    min-height: 100vh;
+    justify-content: flex-start;
+    padding-top: 30px;
+  }
+
+  /* BIG LOGO BUT CONTROLLED */
+  nav img {
+    height: 250px;       /* BIG logo */
+    margin-bottom: 10px;
+  }
+
+  /* KEEP HERO TEXT CLOSE (NO PUSH DOWN) */
+  .hero {
+    margin-top: 0;
+    padding: 0 20px 40px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+
+  .hero p {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .btns {
+    gap: 10px;
+  }
+}
+
+/* ---------- SMALL PHONES (≤480px) ---------- */
+@media (max-width: 480px) {
+  nav img {
+    height: 200px; /* still big but not overpowering */
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 13px;
+  }
+}
+
+/* ---------- TRUST BAR MOBILE ---------- */
+@media (max-width: 768px) {
+  .trust {
+    font-size: 14px;
+    padding: 14px 16px;
+  }
+}
+
+/* ---------- MARKET & PROCESS SECTIONS ---------- */
+@media (max-width: 768px) {
+  .market-insights {
+    padding: 40px 20px 45px;
+  }
+
+  .investment-process {
+    padding: 45px 20px 55px;
+  }
+
+  .market-grid,
+  .process-grid {
+    gap: 24px;
+  }
+}
+
+/* ---------- WHY BAIG REAL ESTATE (MOBILE) ---------- */
+@media (max-width: 768px) {
+  .why-baig-real-estate {
+    height: auto;
+    padding: 80px 20px;
+  }
+
+  .why-baig-real-estate h2 {
+    font-size: 32px;
+    margin-bottom: 24px;
+  }
+
+  .why-baig-real-estate ul {
+    max-width: 100%;
+  }
+
+  .why-baig-real-estate li {
+    font-size: 14px;
+  }
+}
+
+/* ---------- WHO WE WORK WITH & CLIENT EXPERIENCES ---------- */
+@media (max-width: 768px) {
+  .who-we-work,
+  .client-experiences {
+    padding: 45px 20px;
+  }
+
+  .partners-grid,
+  .client-grid {
+    gap: 22px;
+  }
+}
+
+/* ---------- FOOTER MOBILE: ONE COLUMN ---------- */
+@media (max-width: 768px) {
+  .footer {
+    padding: 60px 20px 90px;
+    text-align: center;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr; /* SINGLE COLUMN */
+    gap: 30px;
+  }
+
+  .footer-brand img {
+    height: 160px;
+    margin: 0 auto;
+  }
+
+  .footer-contact {
+    margin-top: 0;
+  }
+
+  .footer .social-icons {
+    justify-content: center;
+  }
+}
+
+/* ---------- FOOTER BOTTOM MOBILE ---------- */
+@media (max-width: 768px) {
+  .footer-bottom {
+    font-size: 14px;
+    padding: 14px 16px;
+  }
+}
+
+/* ---------- FLOATING WHATSAPP MOBILE ---------- */
+@media (max-width: 768px) {
+  .whatsapp-float {
+    width: 54px;
+    height: 54px;
+    font-size: 26px;
+    line-height: 54px;
+  }
+}
