@@ -122,27 +122,26 @@ nav img {
 
 /* TRUST BAR FIXED AT BOTTOM OF HEADER */
 .trust {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100vw;
-    z-index: 3;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;              /* ensures full width */
+  width: 100%;
+  max-width: none;       /* prevent container limits */
+  margin: 0;
+  padding: 16px 20px;
 
-    /* Enhanced frosted glass effect */
-    backdrop-filter: blur(20px) saturate(120%);
-    -webkit-backdrop-filter: blur(20px) saturate(120%); /* Safari support */
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+  background: rgba(255, 255, 255, 0.08);
 
-    /* More transparency for depth */
-    background: rgba(255, 255, 255, 0.08);
-
-    color: #fff;
-    text-align: center;
-    font-weight: 500;
-    font-size: 0.95rem;
-    letter-spacing: 0.5px;
-    padding: 16px 20px;
+  color: #fff;
+  text-align: center;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  z-index: 5;
 }
-
 
 /* =====================
    DESKTOP HERO POSITION FIX
@@ -932,10 +931,10 @@ section p {
 /* ---------- HERO / HEADER MOBILE FIX ---------- */
 @media (max-width: 768px) {
   header {
-    height: auto;
-    min-height: 100vh;
-    justify-content: flex-start;
-    padding-top: 30px;
+    min-height: 100vh;        /* ALWAYS full screen height */
+    height: 100vh;            /* lock viewport height */
+    background-position: center;
+    background-size: cover;   /* ensure full cover */
   }
 
   /* BIG LOGO BUT CONTROLLED */
